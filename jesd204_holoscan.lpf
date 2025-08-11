@@ -1,0 +1,465 @@
+# JESD204B Holoscan Sensor Bridge Physical Constraints
+# For Lattice Certus Pro NX FPGA
+# Lattice Preference File (LPF)
+
+# ============================================================================
+# PIN ASSIGNMENTS
+# ============================================================================
+
+# System interface pins
+IO_LOC "sys_clk" CLK_100MHZ;
+IO_LOC "sys_reset" RESET_N;
+
+# FMC connector pins - JESD204B interface
+# Based on CertusPro-NX FMC pin assignments from documentation
+
+# JESD204B Data Lanes
+# Lane 0 (JESD_RXD0)
+IO_LOC "fmc_rx_p[0]" C10;  # FMC Pin C6 -> JESD_RXD0_P
+IO_LOC "fmc_rx_n[0]" B10;  # FMC Pin C7 -> JESD_RXD0_N
+
+# Lane 1 (JESD_RXD1)
+IO_LOC "fmc_rx_p[1]" C12;  # FMC Pin A2 -> JESD_RXD1_P
+IO_LOC "fmc_rx_n[1]" B13;  # FMC Pin A3 -> JESD_RXD1_N
+
+# Lane 2 (JESD_RXD2)
+IO_LOC "fmc_rx_p[2]" B16;  # FMC Pin A6 -> JESD_RXD2_P
+IO_LOC "fmc_rx_n[2]" C16;  # FMC Pin A7 -> JESD_RXD2_N
+
+# Lane 3 (JESD_RXD3)
+IO_LOC "fmc_rx_p[3]" B19;  # FMC Pin A10 -> JESD_RXD3_P
+IO_LOC "fmc_rx_n[3]" B20;  # FMC Pin A11 -> JESD_RXD3_N
+
+# JESD204B Control Signals
+# SYSREF
+IO_LOC "fmc_sysref_p" AC4;  # FMC Pin D8 -> CPRO_FMC_LA01_CC_P
+IO_LOC "fmc_sysref_n" AB4;  # FMC Pin D9 -> CPRO_FMC_LA01_CC_N
+
+# SYNC
+IO_LOC "fmc_sync_p" AA12;  # FMC Pin H7 -> CPRO_FMC_LA02_P
+IO_LOC "fmc_sync_n" AB12;  # FMC Pin H8 -> CPRO_FMC_LA02_N
+
+# JESD Clock
+IO_LOC "fmc_clk_p" E10;  # FMC Pin B20 -> CPRO_FMC_GBTCLK1_P
+IO_LOC "fmc_clk_n" D9;   # FMC Pin B21 -> CPRO_FMC_GBTCLK1_N
+
+# Ethernet interface pins
+IO_LOC "eth_tx_data[0]" W11;  # FMC Pin C10 -> CPRO_FMC_LA06_P
+IO_LOC "eth_tx_data[1]" W10;  # FMC Pin C11 -> CPRO_FMC_LA06_N
+IO_LOC "eth_tx_data[2]" AD9;  # FMC Pin C14 -> CPRO_FMC_LA10_P
+IO_LOC "eth_tx_data[3]" AE9;  # FMC Pin C15 -> CPRO_FMC_LA10_N
+IO_LOC "eth_tx_data[4]" AF6;  # FMC Pin C18 -> CPRO_FMC_LA14_P
+IO_LOC "eth_tx_data[5]" AF5;  # FMC Pin C19 -> CPRO_FMC_LA14_N
+IO_LOC "eth_tx_data[6]" Y6;   # FMC Pin C22 -> CPRO_FMC_LA18_P
+IO_LOC "eth_tx_data[7]" AA6;  # FMC Pin C23 -> CPRO_FMC_LA18_N
+
+# Ethernet control signals
+IO_LOC "eth_tx_valid" AA17;  # FMC Pin C26 -> CPRO_FMC_LA27_P
+IO_LOC "eth_tx_ready" Y17;   # FMC Pin C27 -> CPRO_FMC_LA27_N
+IO_LOC "eth_tx_last" Y4;     # FMC Pin C30 -> CPRO_FMC_I2C_SCL
+
+# Status interface pins
+IO_LOC "status_packets_sent[0]" AA4;   # FMC Pin C31 -> CPRO_FMC_I2C_SDA
+IO_LOC "status_packets_sent[1]" W2;    # FMC Pin C34 -> CPRO_FMC_GA0
+IO_LOC "status_packets_sent[2]" W1;    # FMC Pin B1 -> CPRO_FMC_CLK_DIR
+IO_LOC "status_packets_sent[3]" Y1;    # FMC Pin F1 -> FMC_PG_M2C
+IO_LOC "status_packets_sent[4]" W3;    # FMC Pin H2 -> CPRO_FMC_PRSNT_N
+IO_LOC "status_packets_sent[5]" AC12;  # FMC Pin H4 -> CPRO_FMC_CLKO_M2C_P
+IO_LOC "status_packets_sent[6]" AD12;  # FMC Pin H5 -> CPRO_FMC_CLKO_M2C_N
+IO_LOC "status_packets_sent[7]" AA12;  # FMC Pin H7 -> CPRO_FMC_LA02_P
+
+# Continue status signals using available pins
+IO_LOC "status_packets_sent[8]" AB12;  # FMC Pin H8 -> CPRO_FMC_LA02_N
+IO_LOC "status_packets_sent[9]" AD11;  # FMC Pin H10 -> CPRO_FMC_LA04_P
+IO_LOC "status_packets_sent[10]" AE11; # FMC Pin H11 -> CPRO_FMC_LA04_N
+IO_LOC "status_packets_sent[11]" Y10;  # FMC Pin H13 -> CPRO_FMC_LA07_P
+IO_LOC "status_packets_sent[12]" AA10; # FMC Pin H14 -> CPRO_FMC_LA07_N
+IO_LOC "status_packets_sent[13]" AB9;  # FMC Pin H16 -> CPRO_FMC_LA11_P
+IO_LOC "status_packets_sent[14]" AC9;  # FMC Pin H17 -> CPRO_FMC_LA11_N
+IO_LOC "status_packets_sent[15]" AD6;  # FMC Pin H19 -> CPRO_FMC_LA15_P
+
+# Continue with remaining status bits
+IO_LOC "status_packets_sent[16]" AE6;  # FMC Pin H20 -> CPRO_FMC_LA15_N
+IO_LOC "status_packets_sent[17]" AF4;  # FMC Pin H22 -> CPRO_FMC_LA19_P
+IO_LOC "status_packets_sent[18]" AF3;  # FMC Pin H23 -> CPRO_FMC_LA19_N
+IO_LOC "status_packets_sent[19]" AD3;  # FMC Pin H25 -> CPRO_FMC_LA21_P
+IO_LOC "status_packets_sent[20]" AE3;  # FMC Pin H26 -> CPRO_FMC_LA21_N
+IO_LOC "status_packets_sent[21]" Y16;  # FMC Pin H28 -> CPRO_FMC_LA24_P
+IO_LOC "status_packets_sent[22]" W16;  # FMC Pin H29 -> CPRO_FMC_LA24_N
+IO_LOC "status_packets_sent[23]" W15;  # FMC Pin H31 -> CPRO_FMC_LA28_P
+
+# Complete status_packets_sent
+IO_LOC "status_packets_sent[24]" W14;  # FMC Pin H32 -> CPRO_FMC_LA28_N
+IO_LOC "status_packets_sent[25]" W13;  # FMC Pin H34 -> CPRO_FMC_LA30_P
+IO_LOC "status_packets_sent[26]" Y13;  # FMC Pin H35 -> CPRO_FMC_LA30_N
+IO_LOC "status_packets_sent[27]" V23;  # FMC Pin H37 -> CPRO_FMC_LA32_P
+IO_LOC "status_packets_sent[28]" V22;  # FMC Pin H38 -> CPRO_FMC_LA32_N
+IO_LOC "status_packets_sent[29]" W24;  # FMC Pin J2 -> CPRO_FMC_CLK3_BIDIR_P
+IO_LOC "status_packets_sent[30]" W23;  # FMC Pin J3 -> CPRO_FMC_CLK3_BIDIR_N
+IO_LOC "status_packets_sent[31]" W5;   # FMC Pin D35 -> CPRO_FMC_GA1
+
+# Status bytes sent
+IO_LOC "status_bytes_sent[0]" AB11;  # FMC Pin G2 -> CPRO_FMC_CLK1_M2C_P
+IO_LOC "status_bytes_sent[1]" AC11;  # FMC Pin G3 -> CPRO_FMC_CLK1_M2C_N
+IO_LOC "status_bytes_sent[2]" AA5;   # FMC Pin G6 -> CPRO_FMC_LA00_CC_P
+IO_LOC "status_bytes_sent[3]" Y5;    # FMC Pin G7 -> CPRO_FMC_LA00_CC_N
+IO_LOC "status_bytes_sent[4]" AF12;  # FMC Pin G9 -> CPRO_FMC_LA03_P
+IO_LOC "status_bytes_sent[5]" AF11;  # FMC Pin G10 -> CPRO_FMC_LA03_N
+IO_LOC "status_bytes_sent[6]" AF10;  # FMC Pin G12 -> CPRO_FMC_LA08_P
+IO_LOC "status_bytes_sent[7]" AF9;   # FMC Pin G13 -> CPRO_FMC_LA08_N
+
+# Continue status_bytes_sent
+IO_LOC "status_bytes_sent[8]" AC7;   # FMC Pin G15 -> CPRO_FMC_LA12_P
+IO_LOC "status_bytes_sent[9]" AB7;   # FMC Pin G16 -> CPRO_FMC_LA12_N
+IO_LOC "status_bytes_sent[10]" AB6;  # FMC Pin G18 -> CPRO_FMC_LA16_P
+IO_LOC "status_bytes_sent[11]" AC6;  # FMC Pin G19 -> CPRO_FMC_LA16_N
+IO_LOC "status_bytes_sent[12]" AD4;  # FMC Pin G21 -> CPRO_FMC_LA20_P
+IO_LOC "status_bytes_sent[13]" AE4;  # FMC Pin G22 -> CPRO_FMC_LA20_N
+IO_LOC "status_bytes_sent[14]" AF21; # FMC Pin G24 -> CPRO_FMC_LA22_P
+IO_LOC "status_bytes_sent[15]" AF20; # FMC Pin G25 -> CPRO_FMC_LA22_N
+
+# Complete status_bytes_sent
+IO_LOC "status_bytes_sent[16]" W17;  # FMC Pin G27 -> CPRO_FMC_LA25_P
+IO_LOC "status_bytes_sent[17]" W18;  # FMC Pin G28 -> CPRO_FMC_LA25_N
+IO_LOC "status_bytes_sent[18]" AF15; # FMC Pin G30 -> CPRO_FMC_LA29_P
+IO_LOC "status_bytes_sent[19]" AF16; # FMC Pin G31 -> CPRO_FMC_LA29_N
+IO_LOC "status_bytes_sent[20]" Y14;  # FMC Pin G33 -> CPRO_FMC_LA31_P
+IO_LOC "status_bytes_sent[21]" AA14; # FMC Pin G34 -> CPRO_FMC_LA31_N
+IO_LOC "status_bytes_sent[22]" Y12;  # FMC Pin G36 -> CPRO_FMC_LA33_P
+IO_LOC "status_bytes_sent[23]" W12;  # FMC Pin G37 -> CPRO_FMC_LA33_N
+IO_LOC "status_bytes_sent[24]" AF19; # FMC Pin D26 -> CPRO_FMC_LA26_P
+IO_LOC "status_bytes_sent[25]" AE19; # FMC Pin D27 -> CPRO_FMC_LA26_N
+IO_LOC "status_bytes_sent[26]" W22;  # FMC Pin D23 -> CPRO_FMC_LA23_P
+IO_LOC "status_bytes_sent[27]" W21;  # FMC Pin D24 -> CPRO_FMC_LA23_N
+IO_LOC "status_bytes_sent[28]" Y11;  # FMC Pin D11 -> CPRO_FMC_LA05_P
+IO_LOC "status_bytes_sent[29]" AA11; # FMC Pin D12 -> CPRO_FMC_LA05_N
+IO_LOC "status_bytes_sent[30]" AD10; # FMC Pin D14 -> CPRO_FMC_LA09_P
+IO_LOC "status_bytes_sent[31]" AE10; # FMC Pin D15 -> CPRO_FMC_LA09_N
+
+# Status control signals
+IO_LOC "status_link_ready" AA7;   # FMC Pin D17 -> CPRO_FMC_LA13_P
+IO_LOC "status_jesd_sync" Y7;     # FMC Pin D18 -> CPRO_FMC_LA13_N
+IO_LOC "status_lane_ready[0]" AD5; # FMC Pin D20 -> CPRO_FMC_LA17_P
+IO_LOC "status_lane_ready[1]" AE5; # FMC Pin D21 -> CPRO_FMC_LA17_N
+IO_LOC "status_lane_ready[2]" D11; # FMC Pin D4 -> CPRO_FMC_GBTCLKO_P
+
+# Configuration interface pins
+IO_LOC "cfg_octets_per_multiframe[0]" E11;  # FMC Pin D5 -> CPRO_FMC_GBTCLKO_N
+IO_LOC "cfg_octets_per_multiframe[1]" AC4;  # FMC Pin D8 -> CPRO_FMC_LA01_CC_P
+IO_LOC "cfg_octets_per_multiframe[2]" AB4;  # FMC Pin D9 -> CPRO_FMC_LA01_CC_N
+IO_LOC "cfg_octets_per_multiframe[3]" Y11;  # FMC Pin D11 -> CPRO_FMC_LA05_P
+IO_LOC "cfg_octets_per_multiframe[4]" AA11; # FMC Pin D12 -> CPRO_FMC_LA05_N
+IO_LOC "cfg_octets_per_multiframe[5]" AD10; # FMC Pin D14 -> CPRO_FMC_LA09_P
+IO_LOC "cfg_octets_per_multiframe[6]" AE10; # FMC Pin D15 -> CPRO_FMC_LA09_N
+IO_LOC "cfg_octets_per_multiframe[7]" AA7;  # FMC Pin D17 -> CPRO_FMC_LA13_P
+IO_LOC "cfg_octets_per_multiframe[8]" Y7;   # FMC Pin D18 -> CPRO_FMC_LA13_N
+IO_LOC "cfg_octets_per_multiframe[9]" AD5;  # FMC Pin D20 -> CPRO_FMC_LA17_P
+
+# Configuration frame parameters
+IO_LOC "cfg_octets_per_frame[0]" AE5;  # FMC Pin D21 -> CPRO_FMC_LA17_N
+IO_LOC "cfg_octets_per_frame[1]" W22;  # FMC Pin D23 -> CPRO_FMC_LA23_P
+IO_LOC "cfg_octets_per_frame[2]" W21;  # FMC Pin D24 -> CPRO_FMC_LA23_N
+IO_LOC "cfg_octets_per_frame[3]" AF19; # FMC Pin D26 -> CPRO_FMC_LA26_P
+IO_LOC "cfg_octets_per_frame[4]" AE19; # FMC Pin D27 -> CPRO_FMC_LA26_N
+IO_LOC "cfg_octets_per_frame[5]" Y4;   # FMC Pin C30 -> CPRO_FMC_I2C_SCL
+IO_LOC "cfg_octets_per_frame[6]" AA4;  # FMC Pin C31 -> CPRO_FMC_I2C_SDA
+IO_LOC "cfg_octets_per_frame[7]" W2;   # FMC Pin C34 -> CPRO_FMC_GA0
+
+# Configuration control signals
+IO_LOC "cfg_disable_scrambler" W1;     # FMC Pin B1 -> CPRO_FMC_CLK_DIR
+IO_LOC "cfg_frame_align_err_threshold[0]" Y1;   # FMC Pin F1 -> FMC_PG_M2C
+IO_LOC "cfg_frame_align_err_threshold[1]" W3;   # FMC Pin H2 -> CPRO_FMC_PRSNT_N
+IO_LOC "cfg_frame_align_err_threshold[2]" AC12; # FMC Pin H4 -> CPRO_FMC_CLKO_M2C_P
+IO_LOC "cfg_frame_align_err_threshold[3]" AD12; # FMC Pin H5 -> CPRO_FMC_CLKO_M2C_N
+IO_LOC "cfg_frame_align_err_threshold[4]" AA12; # FMC Pin H7 -> CPRO_FMC_LA02_P
+IO_LOC "cfg_frame_align_err_threshold[5]" AB12; # FMC Pin H8 -> CPRO_FMC_LA02_N
+IO_LOC "cfg_frame_align_err_threshold[6]" AD11; # FMC Pin H10 -> CPRO_FMC_LA04_P
+IO_LOC "cfg_frame_align_err_threshold[7]" AE11; # FMC Pin H11 -> CPRO_FMC_LA04_N
+
+# LMFC offset and sysref configuration
+IO_LOC "cfg_lmfc_offset[0]" Y10;  # FMC Pin H13 -> CPRO_FMC_LA07_P
+IO_LOC "cfg_lmfc_offset[1]" AA10; # FMC Pin H14 -> CPRO_FMC_LA07_N
+IO_LOC "cfg_lmfc_offset[2]" AB9;  # FMC Pin H16 -> CPRO_FMC_LA11_P
+IO_LOC "cfg_lmfc_offset[3]" AC9;  # FMC Pin H17 -> CPRO_FMC_LA11_N
+IO_LOC "cfg_lmfc_offset[4]" AD6;  # FMC Pin H19 -> CPRO_FMC_LA15_P
+IO_LOC "cfg_lmfc_offset[5]" AE6;  # FMC Pin H20 -> CPRO_FMC_LA15_N
+IO_LOC "cfg_lmfc_offset[6]" AF4;  # FMC Pin H22 -> CPRO_FMC_LA19_P
+IO_LOC "cfg_lmfc_offset[7]" AF3;  # FMC Pin H23 -> CPRO_FMC_LA19_N
+
+# Sysref configuration
+IO_LOC "cfg_sysref_oneshot" AD3;  # FMC Pin H25 -> CPRO_FMC_LA21_P
+IO_LOC "cfg_sysref_disable" AE3;  # FMC Pin H26 -> CPRO_FMC_LA21_N
+
+# ============================================================================
+# I/O STANDARDS
+# ============================================================================
+
+# System interface
+IO_PORT "sys_clk" IO_TYPE=LVCMOS33;
+IO_PORT "sys_reset" IO_TYPE=LVCMOS33;
+
+# FMC interface - differential signaling for JESD204B
+IO_PORT "fmc_rx_p[0]" IO_TYPE=LVDS;
+IO_PORT "fmc_rx_n[0]" IO_TYPE=LVDS;
+IO_PORT "fmc_rx_p[1]" IO_TYPE=LVDS;
+IO_PORT "fmc_rx_n[1]" IO_TYPE=LVDS;
+IO_PORT "fmc_rx_p[2]" IO_TYPE=LVDS;
+IO_PORT "fmc_rx_n[2]" IO_TYPE=LVDS;
+IO_PORT "fmc_rx_p[3]" IO_TYPE=LVDS;
+IO_PORT "fmc_rx_n[3]" IO_TYPE=LVDS;
+
+# JESD204B control signals - differential
+IO_PORT "fmc_sysref_p" IO_TYPE=LVDS;
+IO_PORT "fmc_sysref_n" IO_TYPE=LVDS;
+IO_PORT "fmc_sync_p" IO_TYPE=LVDS;
+IO_PORT "fmc_sync_n" IO_TYPE=LVDS;
+IO_PORT "fmc_clk_p" IO_TYPE=LVDS;
+IO_PORT "fmc_clk_n" IO_TYPE=LVDS;
+
+# Ethernet interface - single-ended for control, differential for data
+IO_PORT "eth_tx_data[0]" IO_TYPE=LVDS;
+IO_PORT "eth_tx_data[1]" IO_TYPE=LVDS;
+IO_PORT "eth_tx_data[2]" IO_TYPE=LVDS;
+IO_PORT "eth_tx_data[3]" IO_TYPE=LVDS;
+IO_PORT "eth_tx_data[4]" IO_TYPE=LVDS;
+IO_PORT "eth_tx_data[5]" IO_TYPE=LVDS;
+IO_PORT "eth_tx_data[6]" IO_TYPE=LVDS;
+IO_PORT "eth_tx_data[7]" IO_TYPE=LVDS;
+IO_PORT "eth_tx_valid" IO_TYPE=LVDS;
+IO_PORT "eth_tx_ready" IO_TYPE=LVDS;
+IO_PORT "eth_tx_last" IO_TYPE=LVCMOS33;
+
+# Status interface - single-ended
+IO_PORT "status_packets_sent[0]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[1]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[2]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[3]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[4]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[5]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[6]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[7]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[8]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[9]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[10]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[11]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[12]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[13]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[14]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[15]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[16]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[17]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[18]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[19]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[20]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[21]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[22]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[23]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[24]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[25]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[26]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[27]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[28]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[29]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[30]" IO_TYPE=LVCMOS33;
+IO_PORT "status_packets_sent[31]" IO_TYPE=LVCMOS33;
+
+# Status bytes sent
+IO_PORT "status_bytes_sent[0]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[1]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[2]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[3]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[4]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[5]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[6]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[7]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[8]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[9]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[10]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[11]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[12]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[13]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[14]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[15]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[16]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[17]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[18]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[19]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[20]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[21]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[22]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[23]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[24]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[25]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[26]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[27]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[28]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[29]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[30]" IO_TYPE=LVCMOS33;
+IO_PORT "status_bytes_sent[31]" IO_TYPE=LVCMOS33;
+
+# Status control signals
+IO_PORT "status_link_ready" IO_TYPE=LVCMOS33;
+IO_PORT "status_jesd_sync" IO_TYPE=LVCMOS33;
+IO_PORT "status_lane_ready[0]" IO_TYPE=LVCMOS33;
+IO_PORT "status_lane_ready[1]" IO_TYPE=LVCMOS33;
+IO_PORT "status_lane_ready[2]" IO_TYPE=LVCMOS33;
+
+# Configuration interface
+IO_PORT "cfg_octets_per_multiframe[0]" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_octets_per_multiframe[1]" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_octets_per_multiframe[2]" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_octets_per_multiframe[3]" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_octets_per_multiframe[4]" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_octets_per_multiframe[5]" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_octets_per_multiframe[6]" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_octets_per_multiframe[7]" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_octets_per_multiframe[8]" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_octets_per_multiframe[9]" IO_TYPE=LVCMOS33;
+
+IO_PORT "cfg_octets_per_frame[0]" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_octets_per_frame[1]" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_octets_per_frame[2]" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_octets_per_frame[3]" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_octets_per_frame[4]" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_octets_per_frame[5]" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_octets_per_frame[6]" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_octets_per_frame[7]" IO_TYPE=LVCMOS33;
+
+IO_PORT "cfg_disable_scrambler" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_frame_align_err_threshold[0]" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_frame_align_err_threshold[1]" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_frame_align_err_threshold[2]" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_frame_align_err_threshold[3]" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_frame_align_err_threshold[4]" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_frame_align_err_threshold[5]" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_frame_align_err_threshold[6]" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_frame_align_err_threshold[7]" IO_TYPE=LVCMOS33;
+
+IO_PORT "cfg_lmfc_offset[0]" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_lmfc_offset[1]" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_lmfc_offset[2]" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_lmfc_offset[3]" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_lmfc_offset[4]" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_lmfc_offset[5]" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_lmfc_offset[6]" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_lmfc_offset[7]" IO_TYPE=LVCMOS33;
+
+IO_PORT "cfg_sysref_oneshot" IO_TYPE=LVCMOS33;
+IO_PORT "cfg_sysref_disable" IO_TYPE=LVCMOS33;
+
+# ============================================================================
+# DIFFERENTIAL PAIR CONSTRAINTS
+# ============================================================================
+
+# Define differential pairs for JESD204B interface
+IO_PORT "fmc_rx_p[0]" DIFFRESISTOR=100;
+IO_PORT "fmc_rx_n[0]" DIFFRESISTOR=100;
+IO_PORT "fmc_rx_p[1]" DIFFRESISTOR=100;
+IO_PORT "fmc_rx_n[1]" DIFFRESISTOR=100;
+IO_PORT "fmc_rx_p[2]" DIFFRESISTOR=100;
+IO_PORT "fmc_rx_n[2]" DIFFRESISTOR=100;
+IO_PORT "fmc_rx_p[3]" DIFFRESISTOR=100;
+IO_PORT "fmc_rx_n[3]" DIFFRESISTOR=100;
+
+# JESD204B control signals
+IO_PORT "fmc_sysref_p" DIFFRESISTOR=100;
+IO_PORT "fmc_sysref_n" DIFFRESISTOR=100;
+IO_PORT "fmc_sync_p" DIFFRESISTOR=100;
+IO_PORT "fmc_sync_n" DIFFRESISTOR=100;
+IO_PORT "fmc_clk_p" DIFFRESISTOR=100;
+IO_PORT "fmc_clk_n" DIFFRESISTOR=100;
+
+# Ethernet differential pairs
+IO_PORT "eth_tx_data[0]" DIFFRESISTOR=100;
+IO_PORT "eth_tx_data[1]" DIFFRESISTOR=100;
+IO_PORT "eth_tx_data[2]" DIFFRESISTOR=100;
+IO_PORT "eth_tx_data[3]" DIFFRESISTOR=100;
+IO_PORT "eth_tx_data[4]" DIFFRESISTOR=100;
+IO_PORT "eth_tx_data[5]" DIFFRESISTOR=100;
+IO_PORT "eth_tx_data[6]" DIFFRESISTOR=100;
+IO_PORT "eth_tx_data[7]" DIFFRESISTOR=100;
+IO_PORT "eth_tx_valid" DIFFRESISTOR=100;
+IO_PORT "eth_tx_ready" DIFFRESISTOR=100;
+
+# ============================================================================
+# PULL-UP/PULL-DOWN RESISTORS
+# ============================================================================
+
+# System reset with pull-up
+IO_PORT "sys_reset" PULLMODE=UP;
+
+# Configuration pins with pull-down for safe defaults
+IO_PORT "cfg_disable_scrambler" PULLMODE=DOWN;
+IO_PORT "cfg_sysref_oneshot" PULLMODE=DOWN;
+IO_PORT "cfg_sysref_disable" PULLMODE=DOWN;
+
+# I2C pins with pull-up
+IO_PORT "eth_tx_last" PULLMODE=UP;  # I2C SCL
+IO_PORT "status_packets_sent[0]" PULLMODE=UP;  # I2C SDA
+
+# ============================================================================
+# DRIVE STRENGTH SETTINGS
+# ============================================================================
+
+# Ethernet interface - higher drive strength for longer traces
+IO_PORT "eth_tx_data[0]" DRIVE=8;
+IO_PORT "eth_tx_data[1]" DRIVE=8;
+IO_PORT "eth_tx_data[2]" DRIVE=8;
+IO_PORT "eth_tx_data[3]" DRIVE=8;
+IO_PORT "eth_tx_data[4]" DRIVE=8;
+IO_PORT "eth_tx_data[5]" DRIVE=8;
+IO_PORT "eth_tx_data[6]" DRIVE=8;
+IO_PORT "eth_tx_data[7]" DRIVE=8;
+IO_PORT "eth_tx_valid" DRIVE=8;
+IO_PORT "eth_tx_ready" DRIVE=8;
+
+# Status outputs - standard drive strength
+IO_PORT "status_link_ready" DRIVE=4;
+IO_PORT "status_jesd_sync" DRIVE=4;
+IO_PORT "status_lane_ready[0]" DRIVE=4;
+IO_PORT "status_lane_ready[1]" DRIVE=4;
+IO_PORT "status_lane_ready[2]" DRIVE=4;
+
+# ============================================================================
+# SLEW RATE SETTINGS
+# ============================================================================
+
+# High-speed differential signals for JESD204B
+IO_PORT "fmc_rx_p[0]" SLEWRATE=FAST;
+IO_PORT "fmc_rx_n[0]" SLEWRATE=FAST;
+IO_PORT "fmc_rx_p[1]" SLEWRATE=FAST;
+IO_PORT "fmc_rx_n[1]" SLEWRATE=FAST;
+IO_PORT "fmc_rx_p[2]" SLEWRATE=FAST;
+IO_PORT "fmc_rx_n[2]" SLEWRATE=FAST;
+IO_PORT "fmc_rx_p[3]" SLEWRATE=FAST;
+IO_PORT "fmc_rx_n[3]" SLEWRATE=FAST;
+
+IO_PORT "fmc_sysref_p" SLEWRATE=FAST;
+IO_PORT "fmc_sysref_n" SLEWRATE=FAST;
+IO_PORT "fmc_sync_p" SLEWRATE=FAST;
+IO_PORT "fmc_sync_n" SLEWRATE=FAST;
+IO_PORT "fmc_clk_p" SLEWRATE=FAST;
+IO_PORT "fmc_clk_n" SLEWRATE=FAST;
+
+# Ethernet interface
+IO_PORT "eth_tx_data[0]" SLEWRATE=FAST;
+IO_PORT "eth_tx_data[1]" SLEWRATE=FAST;
+IO_PORT "eth_tx_data[2]" SLEWRATE=FAST;
+IO_PORT "eth_tx_data[3]" SLEWRATE=FAST;
+IO_PORT "eth_tx_data[4]" SLEWRATE=FAST;
+IO_PORT "eth_tx_data[5]" SLEWRATE=FAST;
+IO_PORT "eth_tx_data[6]" SLEWRATE=FAST;
+IO_PORT "eth_tx_data[7]" SLEWRATE=FAST;
+IO_PORT "eth_tx_valid" SLEWRATE=FAST;
+IO_PORT "eth_tx_ready" SLEWRATE=FAST;
+
+# ============================================================================
+# CLOCK CONSTRAINTS
+# ============================================================================
+
+# Mark JESD clock as dedicated clock input
+IO_PORT "fmc_clk_p" CLOCK_DEDICATED=TRUE;
+IO_PORT "fmc_clk_n" CLOCK_DEDICATED=TRUE;
+
+# Mark system clock as dedicated
+IO_PORT "sys_clk" CLOCK_DEDICATED=TRUE;
